@@ -10,8 +10,9 @@ def main():
 def isPlaying(): # TODO - return true if still playing, false if player won or lost
     if board[6[0]] != "":
         return False
-    elif answer == guess
-
+    elif answer == guess:
+        return False
+    return True
 
 def isValidWord(word): # TODO - return true if player input is a valid guess (use possible_answers array), otherwise false
     for i in possible_answers:
