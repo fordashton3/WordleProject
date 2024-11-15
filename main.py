@@ -1,34 +1,35 @@
 import random
 from colorama import init, Fore, Style
 
-
 def main():
 
-    while isPlaying(): # TODO main gameplay loop
-       printBoard(board)
+    while is_playing(): # TODO main gameplay loop
 
-def isPlaying(): # TODO - return true if still playing, false if player won or lost
+
+
+def is_playing(): # TODO - return true if still playing, false if player won or lost
     if board[6[0]] != "":
         return False
     elif answer == guess:
         return False
-    return True
+    else:
+        return True
 
-def isValidWord(word): # TODO - return true if player input is a valid guess (use possible_answers array), otherwise false
+def is_valid_word(word): # TODO - return true if player input is a valid guess (use possible_answers array), otherwise false
     for i in possible_answers:
         if word == possible_answers[i]:
             return True
     return False
 
-def printBoard(board):
+def print_board(board):
     for word in board:
         print("----------------\n")
         for i in len(word):
-            print("| {} ", end="").format(formatLetter(word, i)) # TODO - implement color for each letter
+            print("| {} ", end="").format(format_letter(word, i)) # TODO - implement color for each letter
         print("|")
     print("----------------")
 
-def formatLetter(word, letter_index): # Done, needs testing
+def format_letter(word, letter_index): # Done, needs testing
     # Green if letter same position as answer
     if word.index(letter_index) == answer.index(letter_index):
         return Fore.GREEN + word.index(letter_index) + Style.RESET_ALL
@@ -47,6 +48,18 @@ def get_word_array(input_file): # Done, needs testing
 
         five_letter_words = [word.strip().upper() for word in words if len(word.strip()) == 5]
         return five_letter_words
+
+def has_digit(string):
+    for x in string:
+        if not x.isalpha() and x != "." :
+            return False
+    return True
+
+def get_username():
+    username = input("Please enter your First name and Last inital (John D.): ")
+    while has_digit(username):
+        input(Fore.RED + "Error: Cannot have number in username." + Style.RESET_ALL)
+        username = input("Please enter your First name and Last inital (John D.): ")
 
 
 board = [["" for _ in range(5)] for _ in range(6)]

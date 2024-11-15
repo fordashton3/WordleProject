@@ -3,14 +3,7 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="\final_answers.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\possible_answers.csv">
+        <entry key="\possibleAnswers.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
