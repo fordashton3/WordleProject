@@ -61,6 +61,8 @@ def get_username():
         input(Fore.RED + "Error: Cannot have number in username." + Style.RESET_ALL)
         username = input("Please enter your First name and Last inital (John D.): ")
 
+# TODO - Write method for adding user score to leaderboard: Ben
+
 
 board = [["" for _ in range(5)] for _ in range(6)]
 possible_answers = get_word_array("possibleAnswers.csv")
