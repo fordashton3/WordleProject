@@ -1,7 +1,7 @@
 import random
 from colorama import init, Fore, Style
 
-def main():
+def main():         #TODO format main loop
 
     while is_playing(): # TODO main gameplay loop
 
