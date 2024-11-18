@@ -56,7 +56,7 @@ def has_digit(string):
     return True
 
 def get_username():
-    username = input("Please enter your First name and Last inital (John D.): ")
+    username = input("Please enter your First name and Last initial (John D.): ")
     while has_digit(username):
         input(Fore.RED + "Error: Cannot have number in username." + Style.RESET_ALL)
         username = input("Please enter your First name and Last inital (John D.): ")
