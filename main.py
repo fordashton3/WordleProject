@@ -62,7 +62,7 @@ def get_username():
         input(Fore.RED + "Error: Cannot have number in username." + Style.RESET_ALL)
         username = input("Please enter your First name and Last inital (John D.): ")
 
-def add_score(username): # TODO - Write method for adding user score to leaderboard: Ben
+def add_score(username, score): # TODO - Write method for adding user score to leaderboard: Ben
     score_data = [username, score] # TODO - add actual score variable
     file_name = username + ".csv"
     with open(file_name, mode='a', newline='') as file:
