@@ -65,7 +65,7 @@ def get_username():
 def add_score(username): # TODO - Write method for adding user score to leaderboard: Ben
     score_data = [username, score] # TODO - add actual score variable
     file_name = username + ".csv"
-    with open(file_name, mode='w', newline='') as file:
+    with open(file_name, mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerows(score_data)
 
