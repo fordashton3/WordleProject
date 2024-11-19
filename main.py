@@ -5,9 +5,9 @@ import datetime
 from colorama import init, Fore, Style
 
 def main():         #TODO format main loop
-
+    get_username()
     while is_playing(): # TODO main gameplay loop
-
+        
 
 
 def is_playing(): # TODO - return true if still playing, false if player won or lost
