@@ -68,12 +68,10 @@ def add_score(username, score): # TODO - Write method for adding user score to l
     current_date = str(datetime.date.today())
     score_data = [current_date + " ", " Score: " + score] # TODO - add actual score variable
     file_name = username + ".csv"
-
     file_exists = os.path.exists(file_name)
 
     with open(file_name, mode='a', newline='') as file:
         writer = csv.writer(file, delimiter="|")
-
         if not file_exists:
             writer.writerow([username])
             writer.writerow([])
