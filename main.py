@@ -1,5 +1,7 @@
 import random
 import csv
+import os
+import datetime
 from colorama import init, Fore, Style
 
 def main():         #TODO format main loop
@@ -63,11 +65,20 @@ def get_username():
         username = input("Please enter your First name and Last inital (John D.): ")
 
 def add_score(username, score): # TODO - Write method for adding user score to leaderboard: Ben
-    score_data = [username, score] # TODO - add actual score variable
+    current_date = str(datetime.date.today())
+    score_data = [current_date + " ", " Score: " + score] # TODO - add actual score variable
     file_name = username + ".csv"
+
+    file_exists = os.path.exists(file_name)
+
     with open(file_name, mode='a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerows(score_data)
+        writer = csv.writer(file, delimiter="|")
+
+        if not file_exists:
+            writer.writerow([username])
+            writer.writerow([])
+
+        writer.writerow(score_data)
 
 
 
