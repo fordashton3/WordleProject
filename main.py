@@ -1,4 +1,5 @@
 import random
+import csv
 from colorama import init, Fore, Style
 
 def main():         #TODO format main loop
@@ -61,7 +62,13 @@ def get_username():
         input(Fore.RED + "Error: Cannot have number in username." + Style.RESET_ALL)
         username = input("Please enter your First name and Last inital (John D.): ")
 
-# TODO - Write method for adding user score to leaderboard: Ben
+def add_score(username): # TODO - Write method for adding user score to leaderboard: Ben
+    score_data = [username, score] # TODO - add actual score variable
+    file_name = username + ".csv"
+    with open(file_name, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerows(score_data)
+
 
 
 board = [["" for _ in range(5)] for _ in range(6)]
