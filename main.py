@@ -25,7 +25,7 @@ def is_playing():
 
 def is_valid_word(word):
     for i in range(len(possible_answers)):
-        if word.upper() == possible_answers[i]:
+        if word.upper() == possible_answers[i].upper():
             return True
     return False
 
