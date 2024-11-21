@@ -8,6 +8,7 @@ def main():
     get_username()
     while is_playing(): # TODO main gameplay loop
         print_board(board)
+        get_guess()
 
 
 
