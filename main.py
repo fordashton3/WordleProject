@@ -20,7 +20,13 @@ def main():
             board[row][i] = guess[i]
         row += 1
 
-    print("Game over")
+    score = ""
+    if (guess == answer.upper()):
+        score = str(row)
+    else:
+        score = "Failed!"
+
+    print("Game over. Score: " + score)
 
 
 def is_playing(guess):
