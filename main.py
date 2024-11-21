@@ -4,7 +4,7 @@ import os
 import datetime
 from colorama import init, Fore, Style
 
-def main():         #TODO format main loop
+def main():
     get_username()
     while is_playing(): # TODO main gameplay loop
         
@@ -27,8 +27,8 @@ def is_valid_word(word): # TODO - return true if player input is a valid guess (
 def print_board(board):
     for word in board:
         print("----------------\n")
-        for i in len(word):
-            print("| {} ", end="").format(format_letter(word, i)) # TODO - implement color for each letter
+        for i in range(len(word)):
+            print(f"| {format_letter(word, i)} ", end="") # TODO - implement color for each letter
         print("|")
     print("----------------")
 
