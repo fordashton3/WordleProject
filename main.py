@@ -7,6 +7,8 @@ from colorama import init, Fore, Style
 def main():
     get_username()
     while is_playing(): # TODO main gameplay loop
+        print_board(board)
+        guess = input("Enter a guess: ")
         
 
 
