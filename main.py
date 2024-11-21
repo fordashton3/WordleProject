@@ -8,19 +8,21 @@ from termcolor import colored
 def main():
     username = get_username()
     row = 0
+    print(answer)
     while is_playing(): # TODO main gameplay loop
         print_board(board)
         guess = get_guess()
         for i in range(5):
-            print(i)
             board[row][i] = guess[i]
         row += 1
 
 
 def is_playing():
     if board[5][0] != " ":
+        print_board(board)
         return False
-    elif answer == guess:
+    elif guess == answer.upper():
+        print_board(board)
         return False
     else:
         return True
