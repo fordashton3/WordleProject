@@ -86,7 +86,7 @@ def add_score(username, score): # TODO - Write method for adding user score to l
 
 def get_guess():
     guess=input("Enter a five letter word:")
-    if not is_valid_word(guess):
+    while not is_valid_word(guess):
         guess=input("Enter another 5 letter word:")
     return guess
 
