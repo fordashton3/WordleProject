@@ -9,15 +9,21 @@ def main():
     username = get_username()
     row = 0
     print(answer)
-    while is_playing(): # TODO main gameplay loop
+    guess = get_guess()
+    for i in range(5):
+        board[row][i] = guess[i]
+    row += 1
+    while is_playing(guess): # TODO main gameplay loop
         print_board(board)
         guess = get_guess()
         for i in range(5):
             board[row][i] = guess[i]
         row += 1
 
+    print("Game over")
 
-def is_playing():
+
+def is_playing(guess):
     if board[5][0] != " ":
         print_board(board)
         return False
@@ -102,5 +108,5 @@ board = [[" " for _ in range(5)] for _ in range(6)]
 possible_answers = get_word_array("possibleAnswers.csv")
 valid_words = get_word_array("validWords.csv")
 answer = possible_answers[random.randint(0, len(possible_answers) - 1)]
-guess = ""
+#guess = ""
 main()
