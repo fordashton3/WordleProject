@@ -5,7 +5,8 @@ import datetime
 from colorama import  Fore, Style
 
 def main():
-    get_username()
+    username = get_username()
+    print()
     while is_playing(): # TODO main gameplay loop
         print_board(board)
 
@@ -63,7 +64,8 @@ def get_username():
     username = input("Please enter your First name and Last initial (John D.): ")
     while has_digit(username):
         input(Fore.RED + "Error: Cannot have number in username." + Style.RESET_ALL)
-        username = input("Please enter your First name and Last inital (John D.): ")
+        username = input("Please enter your First name and Last initial (John D.): ")
+    return username
 
 def add_score(username, score): # TODO - Write method for adding user score to leaderboard: Ben
     current_date = str(datetime.date.today())
@@ -79,7 +81,7 @@ def add_score(username, score): # TODO - Write method for adding user score to l
 
         writer.writerow(score_data)
 
-def get_guess(guess):
+def get_guess():
     guess=input("Enter a five letter word:")
     if not is_valid_word(guess):
         guess=input("Enter another 5 letter word:")
