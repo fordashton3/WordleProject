@@ -10,9 +10,9 @@ def main():
     while is_playing(): # TODO main gameplay loop
         print_board(board)
         get_guess()
-        row += 1
         for i in range(5):
             board[row][i] = guess[i]
+        row += 1
 
 
 def is_playing():
