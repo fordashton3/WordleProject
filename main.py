@@ -3,14 +3,16 @@ import csv
 import os
 import datetime
 from colorama import  Fore, Style
+from termcolor import colored
 
 def main():
     username = get_username()
     row = 0
     while is_playing(): # TODO main gameplay loop
         print_board(board)
-        get_guess()
+        guess = get_guess()
         for i in range(5):
+            print(i)
             board[row][i] = guess[i]
         row += 1
 
@@ -85,9 +87,10 @@ def add_score(username, score): # TODO - Write method for adding user score to l
         writer.writerow(score_data)
 
 def get_guess():
-    guess=input("Enter a five letter word:").upper()
+    guess = input("Enter a five letter word:").upper()
     while not is_valid_word(guess):
-        guess=input("Enter another 5 letter word:").upper()
+        guess = input("Enter another 5 letter word:").upper()
+    return guess
 
 
 
