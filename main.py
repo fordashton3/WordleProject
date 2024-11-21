@@ -22,7 +22,7 @@ def is_playing():
         return True
 
 def is_valid_word(word):
-    for i in possible_answers:
+    for i in range(len(possible_answers)):
         if word == possible_answers[i]:
             return True
     return False
