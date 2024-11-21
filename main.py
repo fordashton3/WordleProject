@@ -25,7 +25,7 @@ def is_playing():
 
 def is_valid_word(word):
     for i in range(len(possible_answers)):
-        if word.upper() == possible_answers[i].upper():
+        if word == possible_answers[i].upper():
             return True
     return False
 
@@ -87,7 +87,7 @@ def add_score(username, score): # TODO - Write method for adding user score to l
 def get_guess():
     guess=input("Enter a five letter word:")
     while not is_valid_word(guess):
-        guess=input("Enter another 5 letter word:")
+        guess=input("Enter another 5 letter word:").upper()
 
 
 
