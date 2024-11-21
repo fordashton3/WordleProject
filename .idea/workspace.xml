@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7576852f-523e-4204-863e-29f594d75db6" name="Changes" comment="Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers">
-      <change beforePath="$PROJECT_DIR$/.idea/WordleProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WordleProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -127,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731973088371</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers">
+      <option name="closed" value="true" />
+      <created>1732057651980</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732057651980</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="UnknownFeatures">

@@ -78,6 +78,13 @@ def add_score(username, score): # TODO - Write method for adding user score to l
 
         writer.writerow(score_data)
 
+def get_guess(guess):
+    guess=input("Enter a five letter word:")
+    if not is_valid_word(guess):
+        guess=input("Enter another 5 letter word:")
+    return guess
+
+
 
 
 board = [["" for _ in range(5)] for _ in range(6)]
