@@ -18,7 +18,7 @@ def main():
 
 
 def is_playing():
-    if board[5][0] != "":
+    if board[5][0] != " ":
         return False
     elif answer == guess:
         return False
@@ -33,11 +33,11 @@ def is_valid_word(word):
 
 def print_board(board):
     for word in board:
-        print("----------------\n")
+        print("---------------------")
         for i in range(len(word)):
             print(f"| {format_letter(word, i)} ", end="")
         print("|")
-    print("----------------")
+    print("---------------------")
 
 def format_letter(word, letter_index): # Done, needs testing
     # Green if letter same position as answer
@@ -96,7 +96,7 @@ def get_guess():
 
 
 
-board = [["" for _ in range(5)] for _ in range(6)]
+board = [[" " for _ in range(5)] for _ in range(6)]
 possible_answers = get_word_array("possibleAnswers.csv")
 valid_words = get_word_array("validWords.csv")
 answer = possible_answers[random.randint(0, len(possible_answers) - 1)]
