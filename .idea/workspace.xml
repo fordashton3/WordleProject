@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7576852f-523e-4204-863e-29f594d75db6" name="Changes" comment="Error in print_board method, didn't use range and format printing was incorrect">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="7576852f-523e-4204-863e-29f594d75db6" name="Changes" comment="I was using index method instead of []" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732220523360</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="I was using index method instead of []">
+      <option name="closed" value="true" />
+      <created>1732221235362</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1732221235362</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -148,6 +153,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers" />
     <MESSAGE value="Error in print_board method, didn't use range and format printing was incorrect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Error in print_board method, didn't use range and format printing was incorrect" />
+    <MESSAGE value="I was using index method instead of []" />
+    <option name="LAST_COMMIT_MESSAGE" value="I was using index method instead of []" />
   </component>
 </project>
