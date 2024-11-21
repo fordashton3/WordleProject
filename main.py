@@ -6,11 +6,13 @@ from colorama import  Fore, Style
 
 def main():
     username = get_username()
-    print()
+    row = 0
     while is_playing(): # TODO main gameplay loop
         print_board(board)
         get_guess()
-
+        row += 1
+        for i in range(5):
+            board[row][i] = guess[i]
 
 
 def is_playing():
