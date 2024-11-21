@@ -1,0 +1,103 @@
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import random\r\nfrom colorama import init, Fore, Style\r\n\r\ndef main():         #TODO format main loop\r\n\r\n    while is_playing(): # TODO main gameplay loop\r\n\r\n\r\n\r\ndef is_playing(): # TODO - return true if still playing, false if player won or lost\r\n    if board[6[0]] != \"\":\r\n        return False\r\n    elif answer == guess:\r\n        return False\r\n    else:\r\n        return True\r\n\r\ndef is_valid_word(word): # TODO - return true if player input is a valid guess (use possible_answers array), otherwise false\r\n    for i in possible_answers:\r\n        if word == possible_answers[i]:\r\n            return True\r\n    return False\r\n\r\ndef print_board(board):\r\n    for word in board:\r\n        print(\"----------------\\n\")\r\n        for i in len(word):\r\n            print(\"| {} \", end=\"\").format(format_letter(word, i)) # TODO - implement color for each letter\r\n        print(\"|\")\r\n    print(\"----------------\")\r\n\r\ndef format_letter(word, letter_index): # Done, needs testing\r\n    # Green if letter same position as answer\r\n    if word.index(letter_index) == answer.index(letter_index):\r\n        return Fore.GREEN + word.index(letter_index) + Style.RESET_ALL\r\n\r\n    # Yellow if letter is in answer\r\n    for i in range(5):\r\n        if word.index(letter_index) == answer.index(i):\r\n            return Fore.YELLOW + word.index(letter_index) + Style.RESET_ALL\r\n\r\n    # Dim if letter not in answer\r\n    return Style.DIM + word.index(letter_index) + Style.RESET_ALL\r\n\r\ndef get_word_array(input_file): # Done, needs testing\r\n    with open(input_file, 'r') as infile:\r\n        words = infile.read().strip().split(',')\r\n\r\n        five_letter_words = [word.strip().upper() for word in words if len(word.strip()) == 5]\r\n        return five_letter_words\r\n\r\ndef has_digit(string):\r\n    for x in string:\r\n        if not x.isalpha() and x != \".\" :\r\n            return False\r\n    return True\r\n\r\ndef get_username():\r\n    username = input(\"Please enter your First name and Last initial (John D.): \")\r\n    while has_digit(username):\r\n        input(Fore.RED + \"Error: Cannot have number in username.\" + Style.RESET_ALL)\r\n        username = input(\"Please enter your First name and Last inital (John D.): \")\r\n\r\n# TODO - Write method for adding user score to leaderboard: Ben\r\n\r\n\r\nboard = [[\"\" for _ in range(5)] for _ in range(6)]\r\npossible_answers = get_word_array(\"possibleAnswers.csv\")\r\nvalid_words = get_word_array(\"validWords.csv\")\r\nanswer = possible_answers[random.randint(0, len(possible_answers) - 1)]\r\nguess = \"\"\r\nmain()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	(revision eb984932e9d095e6bd56157c02ec4fe733c7a3d2)
++++ b/main.py	(date 1732219867993)
+@@ -1,7 +1,7 @@
+ import random
+ from colorama import init, Fore, Style
+ 
+-def main():         #TODO format main loop
++def main():
+ 
+     while is_playing(): # TODO main gameplay loop
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"7576852f-523e-4204-863e-29f594d75db6\" name=\"Changes\" comment=\"Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers\">\r\n      <change beforePath=\"$PROJECT_DIR$/main.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/main.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;fordashton3&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"url\": \"https://github.com/fordashton3/WordleProject.git\",\r\n    \"accountId\": \"d8c6e149-a6ab-45b8-8030-8c15726557f2\"\r\n  }\r\n}]]></component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2oKNBZAEfwTDsoLjPIsQqrBahny\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Python.main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"7576852f-523e-4204-863e-29f594d75db6\" name=\"Changes\" comment=\"\" />\r\n      <created>1730614172283</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1730614172283</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730621199335</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730621199335</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730621313773</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730621313773</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730621363025</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730621363025</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730621369847</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730621369847</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"UnknownFeatures\">\r\n    <option featureType=\"com.intellij.fileTypeFactory\" implementationName=\"*.csv\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"master\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision eb984932e9d095e6bd56157c02ec4fe733c7a3d2)
++++ b/.idea/workspace.xml	(date 1732013828616)
+@@ -4,7 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="7576852f-523e-4204-863e-29f594d75db6" name="Changes" comment="Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers">
++    <list default="true" id="7576852f-523e-4204-863e-29f594d75db6" name="Changes" comment="Changed method names to match naming convention">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -33,12 +34,12 @@
+     &quot;assignee&quot;: &quot;fordashton3&quot;
+   }
+ }</component>
+-  <component name="GithubPullRequestsUISettings"><![CDATA[{
+-  "selectedUrlAndAccountId": {
+-    "url": "https://github.com/fordashton3/WordleProject.git",
+-    "accountId": "d8c6e149-a6ab-45b8-8030-8c15726557f2"
+-  }
+-}]]></component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/fordashton3/WordleProject.git&quot;,
++    &quot;accountId&quot;: &quot;d8c6e149-a6ab-45b8-8030-8c15726557f2&quot;
++  }
++}</component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 2
+ }</component>
+@@ -56,7 +57,8 @@
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;
+   }
+ }</component>
+   <component name="SharedIndexes">
+@@ -107,7 +109,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1730621369847</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="Changed method names to match naming convention">
++      <option name="closed" value="true" />
++      <created>1731971443325</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1731971443325</updated>
++    </task>
++    <task id="LOCAL-00006" summary="Changed method names to match naming convention">
++      <option name="closed" value="true" />
++      <created>1731971538657</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1731971538657</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="UnknownFeatures">
+@@ -138,6 +156,7 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Kinda went crazy and added a bunch of methods. Added files for both guessable words and possible answers" />
++    <MESSAGE value="Changed method names to match naming convention" />
++    <option name="LAST_COMMIT_MESSAGE" value="Changed method names to match naming convention" />
+   </component>
+ </project>
+\ No newline at end of file
