@@ -8,7 +8,7 @@ from termcolor import colored
 def main():
     username = get_username()
     row = 0
-    print(answer) #for testing purposes - remove later
+    #print(answer) #for testing purposes - remove later
     print_board(board)
     guess = get_guess()
     for i in range(5):
