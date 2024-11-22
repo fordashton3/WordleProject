@@ -92,12 +92,18 @@ def get_username():
     return username
 
 def add_score(username, score): # TODO - Write method for adding user score to leaderboard: Ben
+    folder_path = "score-tracking-files"
     current_date = str(datetime.date.today())
     score_data = [current_date + " ", " Score: " + score] # TODO - add actual score variable
     file_name = username + ".csv"
-    file_exists = os.path.exists(file_name)
+    full_path = os.path.join(folder_path, file_name)
 
-    with open(file_name, mode='a', newline='') as file:
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+
+    file_exists = os.path.exists(full_path)
+
+    with open(full_path, mode='a', newline='') as file:
         writer = csv.writer(file, delimiter="|")
         if not file_exists:
             writer.writerow([username])
