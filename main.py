@@ -8,7 +8,8 @@ from termcolor import colored
 def main():
     username = get_username()
     row = 0
-    print(answer)
+    print(answer) #for testing purposes - remove later
+    print_board(board)
     guess = get_guess()
     for i in range(5):
         board[row][i] = guess[i]
@@ -23,10 +24,13 @@ def main():
     score = ""
     if (guess == answer.upper()):
         score = str(row)
+        print("\nCongratulations, You Won!")
     else:
         score = "Failed!"
+        print("\nSorry, You Lost.")
 
-    print("Game over. Score: " + score)
+    add_score(username, score)
+    print("Game over. Score: " + score + "\n")
 
 
 def is_playing(guess):
@@ -46,6 +50,7 @@ def is_valid_word(word):
     return False
 
 def print_board(board):
+    print("\nWORDLE GAME")
     for word in board:
         print("---------------------")
         for i in range(len(word)):
@@ -101,14 +106,10 @@ def add_score(username, score): # TODO - Write method for adding user score to l
         writer.writerow(score_data)
 
 def get_guess():
-    guess = input("Enter a five letter word:").upper()
+    guess = input("\nEnter a five letter word:").upper()
     while not is_valid_word(guess):
-        guess = input("Enter another 5 letter word:").upper()
+        guess = input("Invalid word! Enter another 5 letter word:").upper()
     return guess
-
-
-
-
 
 board = [[" " for _ in range(5)] for _ in range(6)]
 possible_answers = get_word_array("possibleAnswers.csv")
