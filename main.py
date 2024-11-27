@@ -30,7 +30,8 @@ def main():
         print("\nSorry, You Lost.")
 
     add_score(username, score)
-    print("Game over. Score: " + score + "\n")
+    print("Game over. Score: " + score)
+    print("Correct answer: " + answer + "\n")
 
 
 def is_playing(guess):
