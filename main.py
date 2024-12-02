@@ -2,7 +2,7 @@ import random
 import csv
 import os
 import datetime
-from colorama import  Fore, Style
+from colorama import Fore, Style, Back
 from termcolor import colored
 
 def main():
@@ -57,22 +57,22 @@ def print_board(board): # prints the board
     for word in board:
         print("---------------------")
         for i in range(len(word)):
-            print(f"| {format_letter(word, i)} ", end="")
+            print(f"|{format_letter(word, i)}", end="")
         print("|")
     print("---------------------")
 
 def format_letter(word, letter_index): # formats the word in the grid with colors on each letter
     # Green if letter same position as answer
     if word[letter_index] == answer[letter_index]:
-        return Fore.GREEN + word[letter_index] + Style.RESET_ALL
+        return Back.GREEN + Fore.BLACK + " " + word[letter_index] + " " + Style.RESET_ALL
 
     # Yellow if letter is in answer
     for i in range(5):
         if word[letter_index] == answer[i]:
-            return Fore.YELLOW + word[letter_index] + Style.RESET_ALL
+            return Back.YELLOW + Fore.BLACK + " " + word[letter_index] + " " + Style.RESET_ALL
 
     # Dim if letter not in answer
-    return Style.DIM + word[letter_index] + Style.RESET_ALL
+    return Style.DIM + " " + word[letter_index] + " " + Style.RESET_ALL
 
 def get_word_array(input_file): # reads in the possible answers from csv file and adds them to an array
     with open(input_file, 'r') as infile:
