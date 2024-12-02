@@ -14,7 +14,7 @@ def main():
     for i in range(5):
         board[row][i] = guess[i]
     row += 1
-    while is_playing(guess): # TODO main gameplay loop
+    while is_playing(guess): # main gameplay loop
         print_board(board)
         guess = get_guess()
         for i in range(5):
@@ -36,7 +36,7 @@ def main():
     print_leaderboard()
 
 
-def is_playing(guess):
+def is_playing(guess): # checks if the user is still playing
     if board[5][0] != " ":
         print_board(board)
         return False
@@ -46,13 +46,13 @@ def is_playing(guess):
     else:
         return True
 
-def is_valid_word(word):
+def is_valid_word(word): # checks if the users input word is a valid word
     for i in range(len(possible_answers)):
         if word == possible_answers[i].upper():
             return True
     return False
 
-def print_board(board):
+def print_board(board): # prints the board
     print("\nWORDLE GAME")
     for word in board:
         print("---------------------")
@@ -61,7 +61,7 @@ def print_board(board):
         print("|")
     print("---------------------")
 
-def format_letter(word, letter_index): # Done, needs testing
+def format_letter(word, letter_index): # formats the word in the grid with colors on each letter
     # Green if letter same position as answer
     if word[letter_index] == answer[letter_index]:
         return Fore.GREEN + word[letter_index] + Style.RESET_ALL
@@ -74,30 +74,30 @@ def format_letter(word, letter_index): # Done, needs testing
     # Dim if letter not in answer
     return Style.DIM + word[letter_index] + Style.RESET_ALL
 
-def get_word_array(input_file): # Done, needs testing
+def get_word_array(input_file): # reads in the possible answers from csv file and adds them to an array
     with open(input_file, 'r') as infile:
         words = infile.read().strip().split(',')
 
         five_letter_words = [word.strip().upper() for word in words if len(word.strip()) == 5]
         return five_letter_words
 
-def has_digit(string):
+def has_digit(string): # checks if string has a digit, used to validate username input so that it doesn't contain numbers
     for x in string:
         if not x.isalpha() and x != "." :
             return False
     return True
 
-def get_username():
+def get_username(): # get username from the user
     username = input("Please enter your First name and Last initial (John D.): ")
     while has_digit(username):
         input(Fore.RED + "Error: Cannot have number in username." + Style.RESET_ALL)
         username = input("Please enter your First name and Last initial (John D.): ")
     return username
 
-def add_score(username, score): # TODO - Write method for adding user score to leaderboard: Ben
+def add_score(username, score): # adds the user score to their score tracking file, creates a new file if they are a new user
     folder_path = "score-tracking-files"
     current_date = str(datetime.date.today())
-    score_data = [current_date + " ", " Score: " + score] # TODO - add actual score variable
+    score_data = [current_date + " ", " Score: " + score]
     file_name = username + ".csv"
     full_path = os.path.join(folder_path, file_name)
 
@@ -113,7 +113,7 @@ def add_score(username, score): # TODO - Write method for adding user score to l
 
         writer.writerow(score_data)
 
-def update_leaderboard(username, score):
+def update_leaderboard(username, score): # adds users score to leaderboard csv file if it is their best score
     if score == "Failed!":
         return
     
@@ -142,16 +142,18 @@ def update_leaderboard(username, score):
         writer.writerow(header)
         writer.writerows(data)
 
-def print_leaderboard():
+def print_leaderboard(): # prints the leaderboard at the end of the game
     leaderboard_file = "leaderboard.csv"
-    print("Username\tScore")
+    print("LEADERBOARD\n")
+    print("Username\tHigh Score")
     with open(leaderboard_file, mode="r", newline="") as file:
         reader = csv.reader(file)
         next(reader)
         for row in reader:
             print("\t\t".join(row))
+    print("\n\n")
 
-def get_guess():
+def get_guess(): # gets the guess from the user
     guess = input("\nEnter a five letter word:").upper()
     while not is_valid_word(guess):
         guess = input("Invalid word! Enter another 5 letter word:").upper()
