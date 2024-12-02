@@ -8,7 +8,7 @@ from termcolor import colored
 def main():
     username = get_username()
     row = 0
-    #print(answer) #for testing purposes - remove later
+    print(answer) #for testing purposes - remove later
     print_board(board)
     guess = get_guess()
     for i in range(5):
@@ -30,8 +30,10 @@ def main():
         print("\nSorry, You Lost.")
 
     add_score(username, score)
+    update_leaderboard(username, score)
     print("Game over. Score: " + score)
     print("Correct answer: " + answer + "\n")
+    print_leaderboard()
 
 
 def is_playing(guess):
@@ -103,7 +105,6 @@ def add_score(username, score): # TODO - Write method for adding user score to l
         os.makedirs(folder_path)
 
     file_exists = os.path.exists(full_path)
-
     with open(full_path, mode='a', newline='') as file:
         writer = csv.writer(file, delimiter="|")
         if not file_exists:
@@ -111,6 +112,44 @@ def add_score(username, score): # TODO - Write method for adding user score to l
             writer.writerow([])
 
         writer.writerow(score_data)
+
+def update_leaderboard(username, score):
+    if score == "Failed!":
+        return
+    
+    leaderboard_file = "leaderboard.csv"
+    leaderboard = []
+    with open(leaderboard_file, mode="r", newline="") as file:
+        reader = csv.reader(file)
+        leaderboard = list(reader)
+    
+    header = leaderboard[0]
+    data = leaderboard[1:]
+    user_found = False
+    for row in data:
+        if row[0] == username:
+            user_found = True
+            if int(score) < int(row[1]):
+                row[1] = str(score)
+            break
+    
+    if not user_found:
+        data.append([username, str(score)])
+
+    data.sort(key=lambda x: int(x[1]), reverse=False)
+    with open(leaderboard_file, mode="w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(header)
+        writer.writerows(data)
+
+def print_leaderboard():
+    leaderboard_file = "leaderboard.csv"
+    print("Username\tScore")
+    with open(leaderboard_file, mode="r", newline="") as file:
+        reader = csv.reader(file)
+        next(reader)
+        for row in reader:
+            print("\t\t".join(row))
 
 def get_guess():
     guess = input("\nEnter a five letter word:").upper()
@@ -122,5 +161,4 @@ board = [[" " for _ in range(5)] for _ in range(6)]
 possible_answers = get_word_array("possibleAnswers.csv")
 valid_words = get_word_array("validWords.csv")
 answer = possible_answers[random.randint(0, len(possible_answers) - 1)]
-#guess = ""
 main()
