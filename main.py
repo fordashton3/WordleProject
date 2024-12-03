@@ -144,12 +144,12 @@ def update_leaderboard(username, score): # adds users score to leaderboard csv f
 def print_leaderboard(): # prints the leaderboard at the end of the game
     leaderboard_file = "leaderboard.csv"
     print("LEADERBOARD\n")
-    print("Username\tHigh Score")
+    print("Username\t\tHigh Score")
     with open(leaderboard_file, mode="r", newline="") as file:
         reader = csv.reader(file)
         next(reader)
         for row in reader:
-            print("\t\t".join(row))
+            print("{:<20}{:>10}".format(row[0], row[1]))
     print("\n\n")
 
 def get_guess(): # gets the guess from the user
